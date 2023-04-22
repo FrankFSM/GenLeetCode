@@ -82,18 +82,14 @@ def pascal_case(s, flag=False):
 
 
 def main():
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 2:
         print("Usage: python script.py <argument>")
         sys.exit(1)
 
     argument = sys.argv[1]
-    lang = sys.argv[2]
-
     print(f"Received argument: {argument}")
-    print(f"lang argument: {lang}")
-
     problem_slug = argument
-    question_id, problem_title, problem_description, code_snippet = fetch_problem_description(problem_slug, lang)
+    question_id, problem_title, problem_description, code_snippet = fetch_problem_description(problem_slug)
     method_name = pascal_case(problem_slug, False)
     file_name = f'_{question_id}_{pascal_case(problem_slug, True)}'
 
