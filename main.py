@@ -1,3 +1,4 @@
+# encoding: utf-8
 import sys
 import json
 import requests
@@ -56,18 +57,22 @@ def fetch_problem_description(problem_slug, lang='Java'):
 
 
 def generate_java_template(problem_slug, file_name, problem_id, problem_title, problem_description, code, method_name):
+    link = f'https://leetcode-cn.com/problems/{problem_slug}'
     problem_class_name = file_name
-    java_code = f'''/**
+    java_code = f'''
+/**
  * {problem_title}
  * <p>
  * {problem_description}
  *
  * 来源：力扣（LeetCode）
- * 链接：https://leetcode-cn.com/problems/{problem_slug}
+ * 链接：{link}
  */
 {code['code']}
 
 '''
+    print(f"title: {problem_title}")
+    print(f"link : {link}")
     java_code = java_code.replace('Solution', problem_class_name)
     # java_code = java_code.replace(method_name, 'solution')
 
